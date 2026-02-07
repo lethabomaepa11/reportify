@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../global.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet"/>
+    <title>Create a Report | Reportify</title>
+</head>
+<body>
+
+    <header>
+        <h2>Reportify</h2>
+    </header>
+    <main>
+        <form id="reportForm" onsubmit="handleFormSubmission()">
+            <h2>Create a report</h2>
+            <!-- Title -->
+            <label for="title">Title</label>
+            <input type="text" placeholder="e.g Pothole" id="title" name="title"/>
+            <!-- Description -->
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
+             <!-- Location: Show a map on click -->
+            <label for="location">Location</label>
+            <input type="text" readonly id="location" onclick="toggleMap()" name="location" />
+            <button class="primary" type="submit">Submit Report</button>
+        </form>
+    </main>
+
+
+
+    
+    <script src="./reports.js"></script>
+</body>
+</html>

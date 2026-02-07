@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+}
+main {
+  margin-top: 60px;
+  position: relative;
+}
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100svw;
+  background: #000;
+  color: #999;
+}
+
+button,
+textarea,
+input {
+  all: unset;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+button {
+  text-align: center;
+  font-weight: bold;
+}
+textarea,
+input {
+  border: 1px solid #0807077f;
+  background-color: #08070710;
+}
+
+button.primary {
+  background-color: blueviolet;
+  color: white;
+}
