@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 100%;
+}
+form label {
+  margin-block: 5px;
+}
+form button {
+  margin-block: 10px;
+}
+
+/* Desktop styles */
+@media screen and (min-width: 600px) {
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+  }
+}
