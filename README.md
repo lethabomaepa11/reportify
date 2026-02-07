@@ -61,3 +61,40 @@ Below are the entities you will be able to access in the localstorage, they are 
         }]
      **/
   ```
+
+  - assignments: 
+  ```js
+  //NB: an array of assignments is stored in the localstorage
+  //Below is just a representation of a single assignment object
+  Assignment{
+        id: string;
+        report_id:string;
+        department_id:string;
+        title: string;
+        created_at: datetime;
+        status:string;
+    }
+
+    //access assignments from localstorage
+    const assignments = localstorage.get("assignments");
+    //example result
+    console.log(assignments)
+    /**
+     * [{
+            id: XXXXX;
+            report_id:XXXX;
+            department_id:XXXX;
+            title: XXXX;
+            created_at: XXXX;
+            status:XXXX;
+        },
+        {
+            id: XXXXX;
+            report_id:XXXX;
+            department_id:XXXX;
+            title: XXXX;
+            created_at: XXXX;
+            status:XXXX;
+        }]
+     **/
+  ```
