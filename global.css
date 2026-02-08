@@ -21,15 +21,24 @@ input {
   all: unset;
   border-radius: 8px;
   padding: 5px;
+  min-height: 25px;
 }
 
-button {
+button,
+input[type="submit"] {
   text-align: center;
-  font-weight: bold;
+  cursor: pointer;
 }
 textarea,
 input {
-  border: 1px solid #0807077f;
+  border: 1px solid #08070750;
+}
+
+textarea {
+  min-height: 90px;
+}
+
+button {
   background-color: #08070710;
 }
 
