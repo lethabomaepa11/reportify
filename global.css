@@ -26,17 +26,19 @@ input {
 button,
 input[type="submit"] {
   text-align: center;
-  font-weight: bold;
   cursor: pointer;
 }
 textarea,
 input {
   border: 1px solid #08070750;
-  background-color: #08070710;
 }
 
 textarea {
   min-height: 90px;
+}
+
+button {
+  background-color: #08070710;
 }
 
 button.primary {

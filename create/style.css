@@ -14,6 +14,21 @@ form button {
   margin-block: 10px;
 }
 
+#mapContainer {
+  display: none;
+  position: fixed;
+  height: 100svh;
+  width: 100svw;
+  top: 0;
+  background-color: white;
+}
+#map {
+  position: relative;
+  width: 100%;
+  height: 60svh;
+  bottom: 0;
+}
+
 /* Desktop styles */
 @media screen and (min-width: 600px) {
   main {
