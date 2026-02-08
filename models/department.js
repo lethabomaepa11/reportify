@@ -19,11 +19,11 @@ class department {
 
 
     completeAssignment(assignment) {
-        assignment.status = 'Complete'
+        assignment._status = 'Complete'
     }
 
     rejectAssignment(assignment) {
-        assignment.status = 'Rejected'
+        assignment._status = 'Rejected'
     }   
 
 
@@ -83,6 +83,92 @@ class Assignment{
         new department('203', 'Department C', dummyAssignments3)
     ];
 
+    //website interface 
 
-    
+    /* 
+    - <tr> 
+            <td>
+                assignment 1
+            </td>
+
+            <td>
+               test assignment
+            </td>
+
+            <td>
+               <button>
+                accept 
+               </button>
+
+               <button>
+                reject
+               </button>
+            </td>
+
+            <td>
+                Incomplete
+            </td>
+            
+        </tr>
+    */
+
+        const testDep = departments[0];
+
+        const tableBody = document.getElementById('tableBody');
+
+        const addAssignmentToTable = (assignment) => {
+            const newRow = document.createElement('tr');
+            
+             newRow.innerHTML = `
+             <td>
+                ${assignment._title}
+            </td>
+
+
+          
+             `;
+            //buttons and column
+            const statusCell = document.createElement('td')
+            statusCell.innerText = assignment._status;
+
+             const actionColumn = document.createElement('td');
+             const acceptButton = document.createElement('button');
+             acceptButton.innerText = 'Accept';
+              const rejectButton = document.createElement('button');
+
+              rejectButton.innerText = 'Reject';
+
+            //event listeners 
+            acceptButton.addEventListener('click', () =>{
+                testDep.completeAssignment(assignment);
+                statusCell.innerText = assignment._status;
+                console.log(`${assignment._title}, was accepted by ${testDep._name}`);
+            });
+
+            rejectButton.addEventListener('click', () =>{
+                testDep.rejectAssignment(assignment);
+                statusCell.innerText = assignment._status;
+                console.log(`${assignment._title}, was rejected by ${testDep._name}`);
+            });
+               newRow.appendChild( statusCell);
+            actionColumn.appendChild( acceptButton);
+            actionColumn.appendChild( rejectButton);
+
+            newRow.appendChild(actionColumn);
+
+            tableBody.appendChild(newRow);
+        }
+
+
+ //functionality stuff :
+ // for the loading : 
+ document.addEventListener('DOMContentLoaded', () => {
+    for(let i = 0; i < dummyAssignments.length; i++){
+        addAssignmentToTable(dummyAssignments[i]);
+    }
+ })
+        
+
+
+
 
