@@ -105,6 +105,11 @@ function populateReportsList(reportsList){
 
 //The function to assign a report to a department
 function assignReport(reportId,departmentId){
+    //Return if the report is already assigned
+    if(isAssigned(reportId)!==false){
+        return;
+    }
+
     //Get reports from local storage
     let reports=JSON.parse(localStorage.getItem('reports'))||[];
 
@@ -135,7 +140,27 @@ function assignReport(reportId,departmentId){
     
     }
 
+
 }
+
+
+
+//Check if a report has been assigned to a department
+//If assigned, return department ID
+//Else, return false
+function isAssigned(reportId){
+    let assignments=JSON.parse(localStorage.getItem('assignments'))||[];
+
+    for(let i=0;i<assignments.length;i++){
+        if(assignments[i].report_id===reportId){
+            return assignments[i].department_id;
+        }
+    }
+    return false;
+}
+
+
+
 
 
 
