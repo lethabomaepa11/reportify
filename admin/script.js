@@ -67,6 +67,7 @@ function populateReportsList(reportsList){
         const itemDivider=document.createElement('hr'); //The divider under each report
         itemDivider.className='item-divider'
         const assignedDepartment=document.createElement('p');
+        assignedDepartment.className='assigned-department';
         const assignButton=document.createElement('button'); //The assign button
         const departmentOptions=document.createElement('select'); //Department selector
 
@@ -82,19 +83,36 @@ function populateReportsList(reportsList){
         healthDepOption.textContent='Health Department';
         waterDepOption.textContent='Water Department';
 
-        
-         //The text of the list items
-        listItem.innerText=`Report Id:${reportsList[i].id}
-                                \nTitle: ${reportsList[i].title}
-                                \nDescription: ${reportsList[i].description}
-                                \nReport date: ${reportsList[i].created_at}
-                                \nLong: ${reportsList[i].location['longitude']}
-                                  Lat: ${reportsList[i].location['latitude']}`
-        ;
+        //Create the report title element
+        const reportTitle=document.createElement('h3');
+        reportTitle.textContent=reportsList[i].title;
 
-        //Add the list text and assigned department text we have created to the html list
+        //Create the report date element
+        const reportDate=document.createElement('p');
+        reportDate.className='report-date';
+        reportDate.textContent= new Date(reportsList[i].created_at).toDateString();
+
+        //Create the report description element
+        const reportDescription=document.createElement('p');
+        reportDescription.className='report-description';
+        reportDescription.textContent=reportsList[i].description;
+
+        //Create the report location element
+        const reportLocation=document.createElement('p');
+        reportLocation.className='report-location';
+        reportLocation.textContent=`Long: ${reportsList[i].location['longitude']}
+                                    -Lat: ${reportsList[i].location['latitude']}`;
+        
+    
+        //Add the elements to the list
+        listItem.append(reportTitle);
+        listItem.append(reportDate);
+        listItem.append(reportDescription);
+        listItem.append(reportLocation);
         reportsListUI.appendChild(listItem);
         reportsListUI.appendChild(assignedDepartment)
+
+        
 
         //Conditional rendering based on if the report is assigned or not
         if(isAssigned(reportsList[i].id)===false){
@@ -137,41 +155,24 @@ function assignReport(reportId,departmentId){
 
     //Get reports from local storage
     let reports=JSON.parse(localStorage.getItem('reports'))||[];
+    let departments=JSON.parse(localStorage.getItem('departments'))||[];
 
-    //Check if the report and department exist using the loops
-    for(let i=0;i<reports.length;i++){
-        if(reports[i].id===reportId){
-            let departments=JSON.parse(localStorage.getItem('departments'))||[];
-            for(let j=0;j<departments.length;j++){
-                if(departments[j].id===departmentId){
-                    let assignments=JSON.parse(localStorage.getItem('assignments'))||[];//Get assignments from local storage
-                    let assignment=new Assignment(reportId,departmentId);//Create the assignment
-                    //Push the new assignment
-                    //**Some redundant work happening here(Assignment is saved twice, will discuss and fix)
-                    assignments.push(assignment);
-                    departments[j].assignments.push(assignment.id);
-                    
-                    //save to local storage
-                    localStorage.setItem('departments',JSON.stringify(departments));
-                    localStorage.setItem('assignments',JSON.stringify(assignments));
+    let reportObj=reports.find(report=>report.id===reportId);
+    let departmentObj=departments.find(department=>department.id===departmentId);
 
+    if( reportObj && departmentObj){
+        let assignments=JSON.parse(localStorage.getItem('assignments'))||[];//Get assignments from local storage
+        let assignment=new Assignment(reportId,departmentId);//Create the assignment
+        assignments.push(assignment);
+        localStorage.setItem('assignments',JSON.stringify(assignments));
 
-                    console.log(localStorage.getItem('assignments'));
-
-                    //Stop the inner loop after finding the department, creating assignment, and assigning
-                    break;
-                }
-            }
-            //Stop the outer loop after finding the report
-            break;
-        }
-
+    }
+    else{
+        alert('Invalid report or department\nAssignment not successful');
     }
 
     //Re-populate the list after creating an assignment(this is to reflect the changes on a new list)
     populateReportsList(reports);
-
-
 }
 
 
@@ -201,5 +202,9 @@ function main(){
     populateReportsList(reports);
 }
 
-
+main();
 setInterval(main,5000);
+
+
+
+
