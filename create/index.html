@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link href="../global.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet"/>
+    <title>Create a Report | Reportify</title>
+</head>
+<body>
+
+    <header>
+        <h2>Reportify</h2>
+    </header>
+    <main>
+        <form id="reportForm">
+            <h2>Create a report</h2>
+            <!-- Title -->
+            <label for="title">Title</label>
+            <input type="text" placeholder="e.g Pothole" id="title" name="title"/>
+            <!-- Description -->
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
+             <!-- Submission Button-->
+            <button class="primary" type="submit">Submit Report</button>
+        </form>
+    </main>
+
+
+
+    
+    <script src="./script.js"></script>
+</body>
+</html>
