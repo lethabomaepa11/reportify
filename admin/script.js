@@ -128,11 +128,14 @@ function populateReportsList(reportsList){
 
 //The function to assign a report to a department
 function assignReport(reportId,departmentId){
+<<<<<<< HEAD
+=======
     //Return if the report is already assigned
     if(isAssigned(reportId)!==false){
         return;
     }
 
+>>>>>>> origin
     //Get reports from local storage
     let reports=JSON.parse(localStorage.getItem('reports'))||[];
 
@@ -147,7 +150,11 @@ function assignReport(reportId,departmentId){
                     //Push the new assignment
                     //**Some redundant work happening here(Assignment is saved twice, will discuss and fix)
                     assignments.push(assignment);
+<<<<<<< HEAD
+                    departments[j].assignments.push(assignment);
+=======
                     departments[j].assignments.push(assignment.id);
+>>>>>>> origin
                     
                     //save to local storage
                     localStorage.setItem('departments',JSON.stringify(departments));
@@ -166,9 +173,6 @@ function assignReport(reportId,departmentId){
 
     }
 
-    //Re-populate the list after creating an assignment(this is to reflect the changes on a new list)
-    populateReportsList(reports);
-
 
 }
 
@@ -186,6 +190,7 @@ function isAssigned(reportId){
         }
     }
     return false;
+>>>>>>> origin
 }
 
 
@@ -193,9 +198,7 @@ function isAssigned(reportId){
 
 
 
-function main(){
-    populateReportsList(reports);
-}
 
 
-main();
+
+populateReportsList(reports);
