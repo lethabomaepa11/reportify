@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
-<link href="./depstyle.css" rel="stylesheet">
-
+<link href="./style.css" rel="stylesheet">
+<link href="../global.css" rel="stylesheet">
+<script src="../models/department.js" defer></script>
  <title>
         Department page
     </title>
@@ -13,55 +14,32 @@
         <h1> department stuff</h1>
     </header>
 
-   <table>
+  <main style="display: flex; justify-content: center; align-items: center;">
+     <table>
     <thead class='heading'>
         <tr>
             <th>
                 Name
             </th>
 
-            <th>
-                description
+           
+             <th>
+                status
             </th>
-
             <th>
                 action
             </th>
 
-            <th>
-                status
-            </th>
+           
         </tr>
     </thead>
 
-    <tbody>
-        <tr> 
-            <td>
-                assignment 1
-            </td>
-
-            <td>
-               test assignment
-            </td>
-
-            <td>
-               <button>
-                accept 
-               </button>
-
-               <button>
-                reject
-               </button>
-            </td>
-
-            <td>
-                Incomplete
-            </td>
-            
-        </tr>
+    <tbody id="tableBody">
+       
     </tbody>
 
    </table>
+  </main>
 
     <footer></footer>
 </body>
