@@ -8,8 +8,7 @@ function router(e) {
     let newPathname = new URL(e.target.href).pathname;
     url += newPathname.replace("/","");
     //route to the url
-    console.log(url)
-    //location.href = url;
+    location.href = url;
 }
 
 links.forEach(link => {
