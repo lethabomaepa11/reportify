@@ -49,7 +49,7 @@ function handleFormSubmission(e){
     //create a new date object
     const date = new Date();
     const report = {
-                id: date.now() + "-"+title,
+                id: Date.now(),
                 title,
                 description,
                 created_at: date,
