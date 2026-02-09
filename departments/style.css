@@ -1,0 +1,25 @@
+
+th,td,table{
+    border: 1px solid black;
+    
+}
+
+table {
+    position: relative;
+    border-spacing: 20px;
+    border-collapse: collapse;
+    width: 50%;
+    height: 50%;
+    background-color: beige;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    top: 50%;
+    
+}
+
+table .heading{
+    
+    justify-items: center;
+    background-color: aquamarine;
+}
