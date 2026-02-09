@@ -165,9 +165,12 @@ function assignReport(reportId,departmentId){
 
     }
 
+<<<<<<< HEAD
+=======
     //Re-populate the list after creating an assignment(this is to reflect the changes on a new list)
     populateReportsList(reports);
 
+>>>>>>> origin
 
 }
 
@@ -192,6 +195,12 @@ function isAssigned(reportId){
 
 
 
+<<<<<<< HEAD
+
+
+
+populateReportsList(reports);
+=======
 function main(){
     //Get the reports from local storage
     let reports=JSON.parse(localStorage.getItem('reports'))||[];
@@ -200,3 +209,4 @@ function main(){
 
 
 setInterval(main,5000);
+>>>>>>> origin
