@@ -52,13 +52,13 @@ localStorage.setItem('departments',JSON.stringify(departments));
 localStorage.setItem('assignments',JSON.stringify([]));
 */
 
-
+//Get the reports from local storage
 let reports=JSON.parse(localStorage.getItem('reports'))||[];
 //Method to build up the reports list
-//Currently it does too much, will break it down into more methods
 function populateReportsList(reportsList){
     //Get the reports list element from the html file
     const reportsListUI=document.getElementById('reportsList');
+    //Clear the first to avoid duplication
     reportsListUI.innerHTML='';
 
     //Create report elements 
@@ -91,14 +91,11 @@ function populateReportsList(reportsList){
                                   Lat: ${reportsList[i].location['latitude']}`
         ;
 
-        //Add the items we have created to the html list
+        //Add the list text and assigned department text we have created to the html list
         reportsListUI.appendChild(listItem);
         reportsListUI.appendChild(assignedDepartment)
 
-
-        console.log(isAssigned(reportsList[i].id));
-
-        //Assign the assign report function as the assign button click event handler
+        //Conditional rendering based on if the report is assigned or not
         if(isAssigned(reportsList[i].id)===false){
             //Add the options to the select
             departmentOptions.appendChild(healthDepOption);
@@ -106,23 +103,23 @@ function populateReportsList(reportsList){
 
             //Set the display text of the assign button
             assignButton.textContent='Assign';
+
+            //Assign the assign report function as the assign button click event handler
             assignButton.addEventListener('click',()=>{
             assignReport(reportsList[i].id,departmentOptions.value),
             assignedDepartment.textContent='Assigned to: '+isAssigned(reportsList[i].id);
-
-       
             });
-            
+
+            //Add the department select options and assign button to the list
             reportsListUI.appendChild(departmentOptions);
             reportsListUI.appendChild(assignButton);
-
         }
         else{
+            //If the report is already assigned, set the department to the department text
             assignedDepartment.textContent='Assigned to: '+isAssigned(reportsList[i].id);
         }
-        
-        
        
+        //Add the divider under each item
         reportsListUI.appendChild(itemDivider);
     }
 }
@@ -169,7 +166,7 @@ function assignReport(reportId,departmentId){
 
     }
 
-
+    //Re-populate the list after creating an assignment(this is to reflect the changes on a new list)
     populateReportsList(reports);
 
 
@@ -196,7 +193,9 @@ function isAssigned(reportId){
 
 
 
+function main(){
+    populateReportsList(reports);
+}
 
 
-
-populateReportsList(reports);
+main();
