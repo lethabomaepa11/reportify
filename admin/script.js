@@ -199,4 +199,4 @@ function main(){
 }
 
 
-setInterval(main,300);
+setInterval(main,5000);
