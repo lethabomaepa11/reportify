@@ -124,7 +124,7 @@ function assignReport(reportId,departmentId){
                     //Push the new assignment
                     //**Some redundant work happening here(Assignment is saved twice, will discuss and fix)
                     assignments.push(assignment);
-                    departments[j].assignments.push(assignment);
+                    departments[j].assignments.push(assignment.id);
                     
                     //save to local storage
                     localStorage.setItem('departments',JSON.stringify(departments));
