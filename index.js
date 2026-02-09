@@ -4,14 +4,12 @@ const links = document.querySelectorAll("a");
 
 function router(e) {
     e.preventDefault();
-    let url = new URL(e.target.href);
-    let pathname = url.pathname;
-    //append the pathname onto the url if the current url includes .github.io
-    if (String(url).includes(".github.io")) {
-        url += pathname;
-    }
+    let url = location.href;
+    let newPathname = new URL(e.target.href).pathname;
+    url += newPathname.replace("/","");
     //route to the url
-    location.href = url;
+    console.log(url)
+    //location.href = url;
 }
 
 links.forEach(link => {
