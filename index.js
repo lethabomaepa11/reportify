@@ -10,6 +10,7 @@ function router(e) {
     if (String(url).includes(".github.io")) {
         url += pathname;
     }
+    //route to the url
     location.href = url;
 }
 
