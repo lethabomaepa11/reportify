@@ -1,3 +1,5 @@
+import MockDB from "../models/MockDB";
+import { Report, ReportLocation } from "../models/report";
 
 /**Location methods */
 function getLocation() {
@@ -46,21 +48,12 @@ function handleFormSubmission(e){
         alert("Make sure the form is completed.")
         return;
     }
-    //create a new date object
-    const date = new Date();
-    const report = {
-                id: Date.now(),
-                title,
-                description,
-                created_at: date,
-                location: {
-                    longitude: reportLocation.longitude,
-                    latitude: reportLocation.latitude,
-                }
-            }
+    //create a new report object
+    const report = new Report(title, description, new ReportLocation(reportLocation.latitude, reportLocation.longitude));
 
     //insert the report into the existing reports in localstorage
-    insertItem("reports", report)
+    const db = new MockDB();
+    db.insert("reports", report);
     
     //clear inputs
     txtTitle.value = "";
@@ -71,26 +64,7 @@ function handleFormSubmission(e){
 }
 
 
-//function to insert item into localstorage without overwriting the currently stored items
-function insertItem(name, data) {
-    //get the stored string
-    let item = localStorage.getItem(name);
-    //check if its not empty
-    if (item) {
-        //parse to javascript array
-        item = JSON.parse(item);
-        //push new data
-        item.push(data);
-    }
-    else {
-        //no data exists for that item
-        //create new array for that item
-        item = [data];
-    }
 
-    //store the item in the localstorage
-    localStorage.setItem(name, JSON.stringify(item));
-}
 
 
 
