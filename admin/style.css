@@ -1,0 +1,46 @@
+*{
+    border:yellowgreen solid 2px;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+li{
+    background-color: white;
+    margin-bottom: 20px;
+}
+.list-item{
+    margin-bottom: 0px;
+    background-color: white;
+}
+p{
+}
+.item-divider{
+    height:0px;
+}
+button{
+    background-color: coral;
+    color: white;
+    height: 30px;
+    border-radius: 4px;
+    margin: 8px;
+}
+
+select{
+    background-color: coral;
+    color: white;
+    height: 30px;
+    border-radius: 4px;
+    margin: 4px;
+}
+
+hr{
+    margin-bottom:20px ;
+}
+
+#main{
+    width:50%;
+    position:absolute;
+    left: 20%;
+}

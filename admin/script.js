@@ -63,7 +63,9 @@ function populateReportsList(reportsList){
     //Create report elements 
     for(let i=0;i<reportsList.length;i++){
         let listItem=document.createElement('li'); //List item for individual reports
+        listItem.className='list-item';
         const itemDivider=document.createElement('hr'); //The divider under each report
+        itemDivider.className='item-divider'
         const assignedDepartment=document.createElement('p');
         const assignButton=document.createElement('button'); //The assign button
         const departmentOptions=document.createElement('select'); //Department selector
@@ -96,6 +98,7 @@ function populateReportsList(reportsList){
 
         //Conditional rendering based on if the report is assigned or not
         if(isAssigned(reportsList[i].id)===false){
+            assignedDepartment.style.display='none';
             //Add the options to the select
             departmentOptions.appendChild(healthDepOption);
             departmentOptions.appendChild(waterDepOption);
