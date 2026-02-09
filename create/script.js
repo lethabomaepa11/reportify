@@ -1,5 +1,5 @@
-import MockDB from "../models/MockDB";
-import { Report, ReportLocation } from "../models/report";
+import MockDB from "../models/MockDB.js";
+import { Report, ReportLocation } from "../models/report.js";
 
 /**Location methods */
 function getLocation() {
